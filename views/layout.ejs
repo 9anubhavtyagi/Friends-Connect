@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <link rel="stylesheet" href="/css/layout.css">
+
+        <!-- used to add sub page styles (e.g., of user_profile.ejs) in head section -->
+        <%- style %>
+    </head>
+
+    <body>
+        
+        <!-- used to include header partial -->
+        <%- include('_header'); %>
+
+        <!-- used to put html (or ejs) of sub-page -->
+        <%- body %>
+
+        <!-- used to include footer partial -->
+        <%- include('_footer'); %>
+
+        <!-- used to add script of sub-page -->
+        <%- script %>
+    </body>
+</html>
