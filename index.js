@@ -4,7 +4,7 @@ const port = 3000;
 const app = express();
 
 // set-up our router
-app.use('/', require('./routes/index.js'));
+app.use('/', require('./routes/index'));
 
 // set-up views & view-engine
 app.set('view engine', 'ejs');
