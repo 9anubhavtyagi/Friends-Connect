@@ -1,0 +1,14 @@
+1.) main index.js (running web-app)
+
+2.) MVC Architecture:-
+    a.) Models: Create Schema for different modules.
+
+    b.) Views:  --> Create html pages using Template Engine
+                --> Header/Footer Layouts of pages.
+
+    c.) Assets: --> Contain CSS/SCSS files.
+                --> Scripts for our web-pages
+
+    d.) Controllers: --> Implementing functionalities for different modules.
+
+    e.) Routers: --> Routers to connect request to respect Controller.
