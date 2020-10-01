@@ -1,7 +1,8 @@
 1.) main index.js (running web-app)
 
-2.) MVC Architecture:-
+2.) Follow MVC Architecture:-
     a.) Models: Create Schema for different modules.
+                A.) User Schema
 
     b.) Views:  --> Create html pages using Template Engine
                 --> Header/Footer Layouts of pages.
@@ -12,3 +13,10 @@
     d.) Controllers: --> Implementing functionalities for different modules.
 
     e.) Routers: --> Routers to connect request to respect Controller.
+
+
+3.) Authentication :- passport, passport-local, cookie-parser, express-session
+
+4.) Database :- MongoDB
+
+
