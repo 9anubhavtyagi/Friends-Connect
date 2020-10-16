@@ -1,0 +1,17 @@
+#layout-footer {
+  background-color: gray;
+  font-family: sans-serif;
+  display: flex;
+  height: 60px; }
+  #layout-footer #copyright {
+    width: 25%; }
+    #layout-footer #copyright p {
+      margin-left: 10px;
+      color: white; }
+  #layout-footer #footer-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; }
+    #layout-footer #footer-links a {
+      text-decoration: none;
+      color: white; }
