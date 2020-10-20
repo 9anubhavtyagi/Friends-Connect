@@ -11,6 +11,8 @@ router.get('/', homeController.home);
 
 // connection to other routes
 router.use('/user', require('./user'));
+router.use('/posts', require('./posts'));
+router.use('/comments', require('./comments'));
 
 
 module.exports = router;
