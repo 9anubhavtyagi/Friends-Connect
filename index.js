@@ -24,6 +24,7 @@ app.use(sassMiddleWare(
         prefix: '/css'
     }
 ));
+
 app.use(express.urlencoded());
 
 // using cookieParser

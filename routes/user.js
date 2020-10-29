@@ -10,20 +10,18 @@ const passport = require('passport');
 const userController = require('../controllers/user_controller');
 
 
-// serving response for '/users/profile' with the help of users_controller.
-router.get('/profile', passport.checkAuthentication, userController.profile);
+// serving responses -------->
+router.get('/profile/:id', passport.checkAuthentication, userController.profile);
 
-// serving response for '/users/sign-up' with the help of users_controller.
+router.post('/update/:id', passport.checkAuthentication, userController.update);
+
+
 router.get('/sign-up', userController.signUp);
-
-// serving response for '/users/sign-up' with the help of users_controller.
 router.get('/sign-in', userController.signIn);
 
 
-// posting the data to server and creating users with the help of user_controller.
 router.post('/create', userController.create);
 
-// use passport as a middleware to authenticate
 router.post('/create-session', passport.authenticate(
     'local',
     {failureRedirect: '/user/sign-in'},

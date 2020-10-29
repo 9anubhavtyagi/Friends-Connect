@@ -1,5 +1,6 @@
+// importing Schemas
 const Post = require('../models/post');
-
+const User = require('../models/user');
 
 module.exports.home = function(req, res){
     // '{}' is empty query to fetch all comments.
@@ -13,10 +14,13 @@ module.exports.home = function(req, res){
         }
     })
     .exec(function(err, posts){
-        return res.render('home', {
-            title: "Friends-Connect",
-            heading: "Friends-Connect",
-            posts: posts
+        User.find({}, function(err, users){
+            return res.render('home', {
+                title: "Friends-Connect Home",
+                heading: "Friends-Connect Home Wall",
+                posts: posts,
+                all_users: users
+            });
         });
     });
 }
