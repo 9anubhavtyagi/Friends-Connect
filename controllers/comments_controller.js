@@ -17,6 +17,18 @@ module.exports.create = async function(req, res){
             post.comments.push(comment);
             post.save(); // before this comment are in RAM, after that they will be saved in DB.
             
+            if(req.xhr){
+                // Similar for comments to fetch the user's id.
+                comment = await comment.populate('user', 'name').execPopulate();
+
+                return res.status(200).json({
+                    data:{
+                        comment: comment
+                    },
+                    message: "Post Created!"
+                });
+            }
+
             req.flash('success', 'Your Comment has been Published!');
             res.redirect('/');
         }
@@ -40,10 +52,20 @@ module.exports.destroy = async function(req, res){
             // deleting the reference of deleted comment from post's comments array.
             let post = Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.id}});
 
-            req.flash('success', 'Your Comment has been Deleted!');
+            if(req.xhr){
+                return res.status(200).json({
+                    data: {
+                        comment_id: req.params.id
+                    },
+                    message: "Post deleted"
+                });
+            }
+
+            req.flash('success', 'Comment Deleted!');
             return res.redirect('back');
 
         } else{
+            req.flash('error', 'Unauthorized');
             return res.redirect('back');
         }
     } catch(err){
