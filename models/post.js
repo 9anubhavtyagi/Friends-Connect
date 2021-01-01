@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const postSchema = new mongoose.Schema({
     content:{
         type: String,
@@ -10,16 +11,17 @@ const postSchema = new mongoose.Schema({
         ref: 'User'
     },
 
-    // below including the array to store id(s) of all comments on post.
+    // include the array of ids of all comments in this post schema itself.
     comments: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Comment'
         }
     ]
-}, {
-    timestamps: true
-});
+},{
+        timestamps: true
+    }
+);
 
 
 const Post = mongoose.model('Post', postSchema);

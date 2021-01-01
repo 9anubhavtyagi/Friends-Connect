@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 
-// Schema of User
+
+// Scheam of users
 const userSchema = new mongoose.Schema(
     {
         email: {
             type: String,
             required: true,
-            unique: true // email should be unique for each user
+            unique: true // it tells email should be unique...
         },
 
         password: {
@@ -20,9 +21,10 @@ const userSchema = new mongoose.Schema(
         }
     },
     {
-        timestamps: true
+        timestamps:true
     }
 );
+
 
 const User = mongoose.model('User', userSchema);
 

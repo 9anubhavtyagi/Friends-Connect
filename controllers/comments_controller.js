@@ -1,6 +1,6 @@
-// importing Schemas
 const Comment = require('../models/comment');
 const Post = require('../models/post');
+
 
 
 module.exports.create = function(req, res){
@@ -11,10 +11,7 @@ module.exports.create = function(req, res){
                 post: req.body.post,
                 user: req.user._id
             }, function(err, comment){
-                if(err){
-                    console.log("Error in handling the Comment", err);
-                    return;
-                }
+                // handle the error
 
                 post.comments.push(comment);
                 post.save(); // before this comment are in RAM, after that they will be saved in DB.

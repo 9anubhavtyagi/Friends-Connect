@@ -1,23 +1,24 @@
 const mongoose = require('mongoose');
 
+
 const commentSchema = new mongoose.Schema({
-    content: {
+    content:{
         type: String,
         required: true
     },
 
-    // user who made comment
+    // comment belongs to a user
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
 
-    // post on which comment is made
+    // comment is also made on a post
     post: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Posy'
-    }
-}, {
+        ref: 'Post'
+    },
+},{
     timestamps: true
 });
 

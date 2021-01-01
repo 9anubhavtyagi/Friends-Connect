@@ -1,56 +1,71 @@
 const express = require('express');
-const port = 3000;
-
-const db = require('./config/mongoose'); // requiring DB from mongoose.js of config directory.
+const cookieParser = require('cookie-parser');
 const expressLayouts = require('express-ejs-layouts');
 
-const cookieParser = require('cookie-parser');
-const session = require('express-session'); // used for session cookie.
+// requiring db from mongoose.js of config directory.
+const db = require('./config/mongoose');
+
+// used for session cookie.
+const session = require('express-session');
 
 const passport = require('passport');
-const passportLocal = require('./config/passport-local-strategy'); // importing our Strategy
 
-const MongoStore = require('connect-mongo')(session); // importing mongo-store
-const sassMiddleWare = require('node-sass-middleware');
+// importing our Strategy
+const passportLocal = require('./config/passport-local-strategy');
 
+// importing mongo-store
+const MongoStore = require('connect-mongo')(session);
+
+// importing sass Middleware
+const sassMiddleware = require('node-sass-middleware');
+
+
+const port = 8000;
 const app = express();
 
-app.use(sassMiddleWare(
-    {
-        src: './assets/scss',
-        dest: './assets/css',
-        debug: true,
-        outputStyle: 'extended',
-        prefix: '/css'
-    }
-));
+
+app.use(sassMiddleware({
+    src: './assets/scss',
+    dest: './assets/css',
+    debug: true,
+    outputStyle: 'extended',
+    prefix: '/css'
+}));
 
 app.use(express.urlencoded());
 
 // using cookieParser
 app.use(cookieParser());
 
-// using css/js in ejs templates.
 app.use(express.static('./assets'));
 
-app.set('layout extractStyles', true); // for css
-app.set('layout extractScripts', true); // for js
+
+// extracting styles and scripts from css or jss ofsub pages, and put them
+// to the layout (with the layout.css linking line in 'layout.ejs' layout)
+
+// for css(styles)
+app.set('layout extractStyles', true);
+
+// for js(scripts)
+app.set('layout extractScripts', true);
 
 
-app.use (expressLayouts);
+
+app.use(expressLayouts);
 
 
-// set-up views & view-engine
+// set-up view engine
 app.set('view engine', 'ejs');
-app.set('views', './views');
 
+// indicating where are views (ejs templates) present.
+app.set('views', './views');
 
 // adding a middleware, which takes the session cookie and encrypts it.
 app.use(session({
-    name: 'Friends-Connect',
+    name: 'Codeial',
     
     // TO-DO LATER before deployment in production mode.
-    secret: 'TO BE CHANGED LATER',
+    secret: 'blahsomething',
 
     // whenever there is a request(session) which is not initialized,
     // means user is not logged in,
@@ -90,9 +105,14 @@ app.use('/', require('./routes/index'));
 
 
 
+
+
 app.listen(port, function(err){
     if(err){
-        console.log(`Error in running server: ${err}`);
+        // from now we use interpolation
+        // nothing new just like string in '' or ""
+        // but some variable(which has to be printed) can also be added.
+        console.log(`Error in running the server: ${err}`);
         return;
     }
 

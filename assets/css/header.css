@@ -5,7 +5,7 @@
   #layout-header #layout-heading {
     color: white;
     margin-left: 10px; }
-  #layout-header #layout-header-content-list {
+  #layout-header #layut-header-content-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -14,10 +14,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center; }
-    #layout-header #layout-header-content-list li {
+    #layout-header #layut-header-content-list li {
       font-size: 24px;
       display: inline-block;
       color: white; }
-      #layout-header #layout-header-content-list li a {
+      #layout-header #layut-header-content-list li a {
         color: white;
         text-decoration: none; }
