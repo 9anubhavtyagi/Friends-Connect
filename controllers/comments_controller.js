@@ -3,28 +3,34 @@ const Post = require('../models/post');
 
 
 
-module.exports.create = function(req, res){
-    Post.findById(req.body.post, function(err, post){
+module.exports.create = async function(req, res){
+    try{
+        let post = await Post.findById(req.body.post);
+
         if(post){
-            Comment.create({
+            let comment = await Comment.create({
                 content: req.body.content,
                 post: req.body.post,
                 user: req.user._id
-            }, function(err, comment){
-                // handle the error
-
-                post.comments.push(comment);
-                post.save(); // before this comment are in RAM, after that they will be saved in DB.
-
-                res.redirect('/');
             });
+        
+            post.comments.push(comment);
+            post.save(); // before this comment are in RAM, after that they will be saved in DB.
+            
+            req.flash('success', 'Your Comment has been Published!');
+            res.redirect('/');
         }
-    });
+
+    } catch(err){
+        req.flash('error', err);
+        return;
+    }
 }
 
-
-module.exports.destroy = function(req, res){
-    Comment.findById(req.params.id, function(err, comment){
+module.exports.destroy = async function(req, res){
+    try{
+        let comment = await Comment.findById(req.params.id);
+        
         if(comment.user == req.user.id){
             // storing post.id so that we can delete the reference of comment,
             // which we are gonna delete, from post's comments array.
@@ -32,11 +38,16 @@ module.exports.destroy = function(req, res){
             comment.remove(); // delete the comment
 
             // deleting the reference of deleted comment from post's comments array.
-            Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.id}}, function(err, post){
-                return res.redirect('back');
-            });
-        }else{
+            let post = Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.id}});
+
+            req.flash('success', 'Your Comment has been Deleted!');
+            return res.redirect('back');
+
+        } else{
             return res.redirect('back');
         }
-    });
+    } catch(err){
+        req.flash('error', err);
+        return;
+    }
 }

@@ -2,22 +2,17 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const expressLayouts = require('express-ejs-layouts');
 
-// requiring db from mongoose.js of config directory.
+// importing db from mongoose.js of config directory.
 const db = require('./config/mongoose');
 
-// used for session cookie.
-const session = require('express-session');
-
+const session = require('express-session'); // used for session cookie.
 const passport = require('passport');
-
-// importing our Strategy
-const passportLocal = require('./config/passport-local-strategy');
-
-// importing mongo-store
+const passportLocal = require('./config/passport-local-strategy'); // importing our Strategy
 const MongoStore = require('connect-mongo')(session);
-
-// importing sass Middleware
 const sassMiddleware = require('node-sass-middleware');
+
+const flash = require('connect-flash'); // used for flash notification
+const customMware = require('./config/middleware');
 
 
 const port = 8000;
@@ -94,10 +89,12 @@ app.use(session({
 
 // initialize passport
 app.use(passport.initialize());
-
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+
+app.use(flash());
+app.use(customMware.setFlash);
 
 
 // using central express router
