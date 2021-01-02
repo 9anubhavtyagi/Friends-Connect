@@ -2,7 +2,6 @@ const Comment = require('../models/comment');
 const Post = require('../models/post');
 
 
-
 module.exports.create = async function(req, res){
     try{
         let post = await Post.findById(req.body.post);
@@ -33,7 +32,8 @@ module.exports.create = async function(req, res){
             res.redirect('/');
         }
 
-    } catch(err){
+    }
+    catch(err){
         req.flash('error', err);
         return;
     }
@@ -68,7 +68,8 @@ module.exports.destroy = async function(req, res){
             req.flash('error', 'Unauthorized');
             return res.redirect('back');
         }
-    } catch(err){
+    }
+    catch(err){
         req.flash('error', err);
         return;
     }

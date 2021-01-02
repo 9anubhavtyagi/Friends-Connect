@@ -1,13 +1,14 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
-const expressLayouts = require('express-ejs-layouts');
+const cookieParser = require('cookie-parser'); // used to parse data from cookie
+const expressLayouts = require('express-ejs-layouts'); // used for layouts
 
 // importing db from mongoose.js of config directory.
 const db = require('./config/mongoose');
 
 const session = require('express-session'); // used for session cookie.
 const passport = require('passport');
-const passportLocal = require('./config/passport-local-strategy'); // importing our Strategy
+const passportLocal = require('./config/passport-local-strategy'); // importing local Strategy
+const passportJWT = require('./config/passport-jwt-strategy'); // importing jwt Strategy
 const MongoStore = require('connect-mongo')(session);
 const sassMiddleware = require('node-sass-middleware');
 
@@ -18,7 +19,7 @@ const customMware = require('./config/middleware');
 const port = 8000;
 const app = express();
 
-
+// set-up for scss/sass
 app.use(sassMiddleware({
     src: './assets/scss',
     dest: './assets/css',
