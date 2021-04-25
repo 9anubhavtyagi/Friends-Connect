@@ -1,23 +1,20 @@
-#layout-header {
-  background-color: blue;
+#layout-header nav {
   display: flex;
-  justify-content: space-between; }
-  #layout-header #layout-heading {
-    color: white;
-    margin-left: 10px; }
-  #layout-header #layut-header-content-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    margin-right: 20px;
-    width: 15%;
+  justify-content: space-between;
+  padding: 0 10px;
+  background: #2196f3;
+  color: white;
+  box-shadow: 1px 1px 1px 1px lightgrey; }
+  #layout-header nav .mini-logo p {
+    margin: 5px;
+    font-size: 1.4rem;
+    font-weight: bold; }
+  #layout-header nav .auth-links ul {
+    margin: 5% 5px;
     display: flex;
-    justify-content: space-between;
-    align-items: center; }
-    #layout-header #layut-header-content-list li {
-      font-size: 24px;
-      display: inline-block;
-      color: white; }
-      #layout-header #layut-header-content-list li a {
-        color: white;
-        text-decoration: none; }
+    list-style: none; }
+    #layout-header nav .auth-links ul li {
+      margin-right: 10px; }
+  #layout-header nav a {
+    color: white;
+    text-decoration: none; }

@@ -1,17 +1,11 @@
 #layout-footer {
-  background-color: gray;
-  font-family: sans-serif;
+  color: white;
+  background: grey;
+  padding: 5px 10px;
   display: flex;
-  height: 60px; }
-  #layout-footer #copyright {
-    width: 25%; }
-    #layout-footer #copyright p {
-      margin-left: 10px;
-      color: white; }
-  #layout-footer #footer-links {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly; }
-    #layout-footer #footer-links a {
-      text-decoration: none;
-      color: white; }
+  justify-content: flex-start; }
+  #layout-footer a {
+    color: white;
+    text-decoration: none; }
+  #layout-footer .footer-nav ul {
+    list-style: none; }

@@ -1,59 +1,65 @@
 <html>
     <head>
         <title>
-            <%= title %>
+            <%= title  %>
         </title>
 
         <!-- NOTY Links -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
 
-        <!-- jquery CDN -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- jQuery CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
         <link rel="stylesheet" href="/css/layout.css">
         <link rel="stylesheet" href="/css/header.css">
         <link rel="stylesheet" href="/css/footer.css">
 
-        <!-- used to add sub page styles (e.g., of user_profile.ejs) in head section -->
+        <!-- used to add other pages's own style -->
         <%- style %>
+        
     </head>
+
     <body>
 
         <!-- used to include header partial -->
         <%- include('_header'); %>
 
+        
         <main id="layout-main">
             <!-- used to put html (or ejs) of page templates -->
             <%- body %>
+
         </main>
 
         <!-- used to include footer partial -->
         <%- include('_footer'); %>
-        
+
         <%- script %>
 
         <script>
-            <% if(flash.success && flash.success.length > 0){ %>
+            <% if (flash.success && flash.success.length > 0) {%>
                 new Noty({
                     theme: 'relax',
-                    text: '<%= flash.success %>',
+                    text: "<%= flash.success %>",
                     type: 'success',
                     layout: 'topRight',
                     timeout: 1500
-                }).show();
-            <% } %>
+                    
+                }).show();    
+            <%} %>
 
-
-            <% if(flash.error && flash.error.length > 0){ %>
+            <% if (flash.error && flash.error.length > 0) {%>
                 new Noty({
                     theme: 'relax',
-                    text: '<%= flash.success %>',
-                    error: 'error',
+                    text: "<%= flash.error %>",
+                    type: 'error',
                     layout: 'topRight',
                     timeout: 1500
-                }).show();
-            <% } %>
+                    
+                }).show();    
+            <%} %>
         </script>
+        
     </body>
 </html>

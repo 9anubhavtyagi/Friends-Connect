@@ -9,17 +9,24 @@ const router = express.Router();
 
 const homeController = require('../controllers/home_controller');
 
+// console.log('router loaded');
 
 // serving response for '/' with the help of home_controller.
 router.get('/', homeController.home);
 
+
 // following code is to use other router,
 // when a request related to them will arrived
-
 router.use('/users', require('./users'));
 router.use('/posts', require('./posts'));
 router.use('/comments', require('./comments'));
+router.use('/likes', require('./likes'));
+
+// following code is to apis request
 router.use('/api', require('./api'));
 
-// exporting the central router
+// for any further routes, access from here
+// router.use('/routerName', require('./routerfile));
+
+
 module.exports = router;

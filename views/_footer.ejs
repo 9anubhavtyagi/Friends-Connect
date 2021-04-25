@@ -1,12 +1,24 @@
-<!-- footer partial -->
+<!-- header partial -->
 
 <footer id="layout-footer">
-    <div id="copyright">
-        <p> &#169; Codeial Ninjas. All Rights Reserved</p>
+    <div>
+        <p>
+            &#169; Coding Ninjas. All Rights Reserved
+        </p>
     </div>
 
-    <div id="footer-links">
-        <a href="/">Home</a>
-        <a href="/users/profile">Profile</a>
+    <div>
+        <nav class="footer-nav">
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <% if (locals.user){ %>
+                        <a href="/users/profile/<%= locals.user.id %>">Profile</a>
+                    <% } %>
+                </li>
+            </ul>
+        </nav>
     </div>
 </footer>

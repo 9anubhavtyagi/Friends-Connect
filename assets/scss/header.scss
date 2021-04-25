@@ -1,34 +1,35 @@
 #layout-header{
-    background-color: blue;
-    display: flex;
-    justify-content: space-between;
-
-    #layout-heading{
-        color: white;
-        margin-left: 10px;
-        // width: 80%;
-    }
-
-    #layut-header-content-list{
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        margin-right: 20px;
-        width: 15%;
+    nav{
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        padding: 0 10px;
+        background: #2196f3;
+        color: white;
+        box-shadow: 1px 1px 1px 1px lightgrey;
 
-        li{
-            font-size: 24px;
-            display: inline-block;
-            color: white;
-
-            a{
-                color: white;
-                text-decoration: none;
+        .mini-logo{
+            p{
+                margin: 5px;
+                font-size: 1.4rem;
+                font-weight: bold;
             }
         }
-    }
 
+        .auth-links{
+            ul{
+                margin: 5% 5px;
+                display: flex;
+                list-style: none;
+                li{
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        a{
+            color: white;
+            text-decoration: none;
+        }
+
+    }
 }
