@@ -7,7 +7,7 @@ const User = require('../models/user');
 // options for jwt
 let opts = {
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'codeial'
+    secretOrKey: 'friends_connect'
 }
 
 
